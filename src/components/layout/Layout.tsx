@@ -9,5 +9,5 @@ const Layout = ({ children }: LayoutProps) => {
 export default Layout;
 
 const GlobalLayout = tw.div`
-bg-gray-100 w-full h-full max-h-screen fixed
+bg-gray-100 w-full h-auto min-h-screen
 `;

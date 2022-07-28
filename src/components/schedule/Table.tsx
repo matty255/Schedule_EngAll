@@ -23,7 +23,7 @@ const Table = (props: TableProps) => {
             {data &&
               data.map((data) => (
                 <tr key={data?.id}>
-                  <Time time={data.time} />
+                  <Time time={data.time} id={data.id} week={weekday} />
                 </tr>
               ))}
           </tbody>

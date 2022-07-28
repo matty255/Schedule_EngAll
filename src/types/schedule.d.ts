@@ -1,8 +1,9 @@
 interface ScheduleProps {
-  id: string;
+  id?: string;
   tutor: string;
   time: string[];
-  date: string;
+  week?: string;
+  date: Date;
 }
 
 type ScheduleList = ScheduleProps[];

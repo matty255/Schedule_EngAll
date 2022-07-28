@@ -15,7 +15,7 @@ export class HttpRequest {
       .then((response) => response.data);
   }
 
-  post<T>(url: ApiUrlType, data: T) {
+  post<T>(url: string, data: T) {
     return this.service.post(`${url}`, data);
   }
 
@@ -23,5 +23,13 @@ export class HttpRequest {
     return this.service
       .patch(`${url}/${id}`, data)
       .then((response) => response.data);
+  }
+
+  delete(url: string, id: string) {
+    return this.service.delete(`/${url}/${id}`);
+  }
+
+  gett<AxiosInstance>(url: string) {
+    return this.service.get<AxiosInstance>(`/${url}`);
   }
 }

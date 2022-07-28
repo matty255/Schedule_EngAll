@@ -1,16 +1,24 @@
-import { atom } from "recoil";
+import { atom, atomFamily } from "recoil";
 
-export const loadedStatus = atom({
-  key: "loadedStatus",
-  default: false,
+export const timeState = atom({
+  key: "timeState",
+  default: {
+    time: 0,
+    startTime: 0,
+  },
 });
 
-export const activeStatus = atom({
-  key: "activeStatus",
-  default: false,
+export const cutTime = atom({
+  key: "cutTime",
+  default: "am",
 });
 
-export const openStatus = atom({
-  key: "openStatus",
-  default: false,
+export const weekdayArray = atom({
+  key: "weekdayArray",
+  default: [""],
+});
+
+export const Overlap = atom({
+  key: "Overlap",
+  default: [{}],
 });

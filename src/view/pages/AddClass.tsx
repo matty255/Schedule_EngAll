@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/layout/Header";
 import Layout from "../../components/layout/Layout";
 import tw from "tailwind-styled-components";
@@ -9,8 +9,28 @@ import { weekdays } from "../../static/constant/weekdays";
 import { Multi } from "../../components/schedule/selects/Multi";
 import { Single } from "../../components/schedule/selects/Single";
 import { AmPm } from "../../static/constant/AmPm";
+import { timeState, weekdayArray } from "../../store/global";
+import { useRecoilState, useRecoilValue } from "recoil";
+
+import { useSubmit } from "../../hooks/useSubmit";
+import { useScheduleModel } from "../../api/model/useScheduleModels";
+import { useNavigate } from "react-router-dom";
 
 const AddClass = () => {
+  const { addSchedule } = useScheduleModel();
+  const navigate = useNavigate();
+  const week = useRecoilValue(weekdayArray);
+  const times = useRecoilValue(timeState);
+  const { submitData } = useSubmit();
+
+  const onSubmit = () => {
+    if (week.length > 0 && times.time !== 0) {
+      addSchedule(week, submitData);
+      navigate("/view", { replace: true });
+    }
+  };
+  //
+  useEffect(() => {}, []);
   return (
     <>
       <Layout>
@@ -25,18 +45,19 @@ const AddClass = () => {
             <DropdownBox>
               <Text>
                 start time :
-                <Menu menu={time} />
-                <Menu menu={startTime} />
+                <Menu menu={time} submit="time" />
+                <Menu menu={startTime} submit="startTime" />
                 <Single items={AmPm} />
               </Text>
               <Text>
                 repeat on : <Multi items={weekdays} />
               </Text>
-              {/* <div>Selected: {selected.join()}</div> */}
             </DropdownBox>
           </AddTable>
 
-          <Button className="self-end mt-3">Save</Button>
+          <Button className="self-end mt-3" onClick={onSubmit}>
+            Save
+          </Button>
         </div>
       </Layout>
     </>

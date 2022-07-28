@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useRecoilState } from "recoil";
+import { weekdayArray } from "../store/global";
 
 export const useMultiSelect = (initialValue: string[]) => {
-  const [selected, setSelected] = useState<string[]>(initialValue);
+  const [selected, setSelected] = useRecoilState<string[]>(weekdayArray);
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;

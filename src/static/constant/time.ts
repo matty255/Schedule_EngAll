@@ -1,6 +1,6 @@
 const rendering = () => {
   const result = [];
-  for (let i = 1; i < 24; i++) {
+  for (let i = 1; i < 13; i++) {
     result.push(i);
   }
   return result;
