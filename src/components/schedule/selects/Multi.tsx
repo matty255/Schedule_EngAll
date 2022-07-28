@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useMultiSelect } from "../../../hooks/useMultiSelect";
 import { useScheduleModel } from "../../../api/model/useScheduleModels";
-import { ScheduleProps } from "../../../types/schedule";
-import { Overlap } from "../../../store/global";
-import { useRecoilState } from "recoil";
+import { Overlap, CompareValue, timeState } from "../../../store/global";
+import { useRecoilState, useRecoilValue } from "recoil";
 import axios from "axios";
-import { useCompare } from "../../../hooks/useCompare";
+import { getCompare } from "../../../hooks/getCompare";
+import { getDate } from "../../../hooks/getDate";
 
 interface TableProps {
   items: string[];
@@ -13,9 +13,12 @@ interface TableProps {
 
 export const Multi = (props: TableProps) => {
   const { selected, isSelected, onChange, setSelected } = useMultiSelect([]);
+  const { selectedTime, timeEnd, timeValue, timeValueEnd } = getDate();
   const [data, setData] = useRecoilState(Overlap);
-  const { date2 } = useCompare(data);
-
+  const { newArr, isBooked } = getCompare(data, selectedTime);
+  const changeTime = useRecoilValue(timeState);
+  console.log(changeTime.time);
+  console.log(isBooked);
   useEffect(() => {
     setData([]);
   }, []);
@@ -27,11 +30,11 @@ export const Multi = (props: TableProps) => {
           .get(`http://localhost:8000/${week}/`)
           .then((response) => {
             const cp = [response.data];
-            setData([...cp, ...data]);
+            setData([...cp]);
           })
           .catch((error) => {
             console.log(error.response.data.error);
-            throw error;
+            // throw error;
           });
       }),
     );
@@ -54,7 +57,7 @@ export const Multi = (props: TableProps) => {
 
   return (
     <>
-      <ul className="flex flex-row gap-3">
+      <ul className="flex flex-row gap-3 ">
         {props.items &&
           props.items.map((value) => (
             <li key={value}>
@@ -64,6 +67,9 @@ export const Multi = (props: TableProps) => {
                 value={value}
                 checked={isSelected(value)}
                 onChange={onChange}
+                onClick={() =>
+                  !changeTime.time && alert("시간을 먼저 정해주세요!")
+                }
               />
               <label>{value}</label>
             </li>

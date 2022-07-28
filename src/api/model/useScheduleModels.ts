@@ -7,7 +7,7 @@ export const useScheduleModel = () => {
     week.map(
       async (week) =>
         week !== "" &&
-        (await apiRequest.post(`/${week}`, Object.assign(data, week))),
+        (await apiRequest.post(`/${week}`, Object.assign(data, { week }))),
     );
   };
   const getSchedule = async () => await apiRequest.get<Schedule>("/schedule");

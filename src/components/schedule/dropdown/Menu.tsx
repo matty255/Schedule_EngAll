@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Dropdown from "./Dropdown";
-import { timeState } from "../../../store/global";
+import { timeState, CompareValue } from "../../../store/global";
 import { useRecoilState } from "recoil";
-
+import { getDate } from "../../../hooks/getDate";
 interface TableProps {
   menu: number[];
   submit: string;
@@ -13,9 +13,17 @@ type Time = {
 };
 
 const Menu = (menu: TableProps) => {
+  const { timeValue } = getDate();
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
+  const [compareValue, setCompareValue] = useRecoilState(CompareValue);
   const [select, setSelect] = useState<string>("");
   const [times, setTimes] = useRecoilState(timeState);
+
+  React.useEffect(() => {
+    if (times.time !== 0) {
+      setCompareValue(timeValue);
+    }
+  }, [times]);
 
   const submit = menu.submit;
 
