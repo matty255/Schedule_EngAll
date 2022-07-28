@@ -1,15 +1,16 @@
 import React from "react";
 import Header from "../../components/layout/Header";
 import Layout from "../../components/layout/Layout";
-import Table from "../../components/schedule/Tables/Table";
+import Table from "../../components/schedule/Table";
 import { useScheduleModel } from "../../api/model/useScheduleModels";
 import { ScheduleProps } from "../../types/schedule";
 import tw from "tailwind-styled-components";
+import Button from "../../common/Button";
 
 const ViewClass = () => {
   const { getSchedule } = useScheduleModel();
   const [data, setData] = React.useState<ScheduleProps[] | any>();
-  console.log(data?.monday);
+  console.log(data);
   React.useEffect(() => {
     getSchedule().then((response) => setData(response));
   }, []);
@@ -20,10 +21,9 @@ const ViewClass = () => {
 
         <div className="flex flex-col w-full lg:w-4/5 mx-auto">
           <TopBox>
-            <h1 className="m-7 mt-12 text-3xl font-bold">Class schedule</h1>
-            <button className="m-7 mt-12 text-3xl font-bold">
-              Add Class Schedule
-            </button>
+            <h1 className="m-3 mt-12 text-3xl font-bold">Class schedule</h1>
+            <button></button>
+            <Button className="m-3 mt-12">Add Class Schedule</Button>
           </TopBox>
           <div className="flex flex-row">
             <Table weekday="monday" data={data?.monday} />

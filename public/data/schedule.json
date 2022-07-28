@@ -2,129 +2,116 @@
   "card" : {  
     "monday": 
     [  {
-      "id": "sdfsdfsdfer",
+      "id": "sdfsdfr",
       "tutor": "pika",
+      "date" : "dddd",
     "time": ["09:00", "10:00", "am"]},
     {
-      "id": "sdffer11",
+      "id": "sdfsd123dfer",
       "tutor": "pika",
-    "time": ["10:00", "11:00","am"]},
+
+      "date" : "dddd",
+    "time": ["09:00", "10:00", "am"]},
     {
-      "id": "sdfsffer11",
+      "id": "sdfsd123123fsdfer",
       "tutor": "pika",
-    "time": ["02:00", "03:00", "pm"]},
-    {
-      "id": "sdf2343241",
-      "tutor": "pika",
-    "time": ["07:00", "08:00", "pm"]}
+
+      "date" : "dddd",
+    "time": ["09:00", "10:00", "am"]}
   ],
   "tuesday": 
-  [  {
-    "id": "111sdfsdfsdfer",
+  [ {
+    "id": "sdfsd344fsdfer",
     "tutor": "pika",
-    "time": ["09:00", "10:00", "am"]},
+    "minute": "1",
+    "date" : "dddd",
+  "time": ["09:00", "10:00", "am"]},
   {
-    "id": "111sdffer11",
+    "id": "sdfsdfsdf324234er",
     "tutor": "pika",
-    "time": ["10:00", "11:00","am"]},
-  {
-    "id": "111sdfsffer11",
-    "tutor": "pika",
-    "time": ["02:00", "03:00", "pm"]},
-  {
-    "id": "111sdf2343241",
-    "tutor": "pika",
-    "time": ["07:00", "08:00", "pm"]}
+    "minute": "1",
+    "date" : "dddd",
+  "time": ["09:00", "10:00", "am"]}
 ],
 "wednesday": 
 [  {
-  "id": "222sdfsdfsdfer",
+  "id": "sdfsdf2213sdfer",
   "tutor": "pika",
-  "time": ["09:00", "10:00", "am"]},
+  "minute": "1",
+  "date" : "dddd",
+"time": ["09:00", "10:00", "am"]},
 {
-  "id": "222sdffer11",
+  "id": "sdfs123d132fsdfer",
   "tutor": "pika",
-  "time": ["10:00", "11:00","am"]},
+  "minute": "1",
+  "date" : "dddd",
+"time": ["09:00", "10:00", "am"]},
 {
-  "id": "222sdfsffer11",
+  "id": "s123dfs123dfsdfer",
   "tutor": "pika",
-  "time": ["02:00", "03:00", "pm"]},
-{
-  "id": "222sdf2343241",
-  "tutor": "pika",
-  "time": ["07:00", "08:00", "pm"]}
+  "minute": "1",
+  "date" : "dddd",
+"time": ["09:00", "10:00", "am"]}
 ],
 "thursday": 
-[  {
-  "id": "333sdfsdfsdfer",
-  "tutor": "pika",
-  "time": ["09:00", "10:00", "am"]},
-{
-  "id": "333sdffer11",
-  "tutor": "pika",
-  "time": ["10:00", "11:00","am"]},
-{
-  "id": "333sdfsffer11",
-  "tutor": "pika",
-  "time": ["02:00", "03:00", "pm"]},
-{
-  "id": "333sdf2343241",
-  "tutor": "pika",
-  "time": ["07:00", "08:00", "pm"]}
+[  
+  {
+    "id": "sd1231fsdf3sd123fer",
+    "tutor": "pika",
+    "minute": "1",
+    "date" : "dddd",
+  "time": ["09:00", "10:00", "am"]}
 ],
 "friday": 
-[  {
-  "id": "444sdfsdfsdfer",
-  "tutor": "pika",
+[  
+  {
+    "id": "sd123fsdfs123dfer",
+    "tutor": "pika",
+    "minute": "1",
+    "date" : "dddd",
   "time": ["09:00", "10:00", "am"]},
-{
-  "id": "444sdffer11",
-  "tutor": "pika",
-  "time": ["10:00", "11:00","am"]},
-{
-  "id": "444sdfsffer11",
-  "tutor": "pika",
-  "time": ["02:00", "03:00", "pm"]},
-{
-  "id": "444sdf2343241",
-  "tutor": "pika",
-  "time": ["07:00", "08:00", "pm"]}
+  {
+    "index" : "2",
+    "id": "sd12313fsd123fsdfer",
+    "tutor": "pika",
+    "minute": "1",
+    "date" : "dddd",
+  "time": ["09:00", "10:00", "am"]}
 ],
 "saturday": 
 [  {
-  "id": "555sdfsdfsdfer",
+  "id": "sdf123s123df123123sdfer",
   "tutor": "pika",
-  "time": ["09:00", "10:00", "am"]},
+  "minute": "1",
+  "date" : "dddd",
+"time": ["09:00", "10:00", "am"]},
 {
-  "id": "555sdffer11",
+  "id": "sdf213123sdfsdfe123r",
   "tutor": "pika",
-  "time": ["10:00", "11:00","am"]},
+  "minute": "1",
+  "date" : "dddd",
+"time": ["09:00", "10:00", "am"]},
 {
-  "id": "555sdfsffer11",
+  "id": "sdfs123dfsd12313fer",
   "tutor": "pika",
-  "time": ["02:00", "03:00", "pm"]},
+  "minute": "1",
+  "date" : "dddd",
+"time": ["09:00", "10:00", "am"]},
 {
-  "id": "555sdf2343241",
+  "id": "sd123fsd1123fsdfer",
   "tutor": "pika",
-  "time": ["07:00", "08:00", "pm"]}
+  "minute": "1",
+  "date" : "dddd",
+"time": ["09:00", "10:00", "am"]}
 ],
 "sunday": 
-[  {
-  "id": "777sdfsdfsdfer",
-  "tutor": "pika",
-  "time": ["09:00", "10:00", "am"]},
-{
-  "id": "777sdffer11",
-  "tutor": "pika",
-  "time": ["10:00", "11:00","am"]},
-{
-  "id": "777sdfsffer11",
-  "tutor": "pika",
-  "time": ["02:00", "03:00", "pm"]},
-{
-  "id": "777sdf2343241",
-  "tutor": "pika",
-  "time": ["07:00", "08:00", "pm"]}
+[ 
+  {
+    "id": "sd1231233fsdf123sdfer",
+    "tutor": "pika",
+    "minute": "1",
+    "date" : "dddd",
+  "time": ["09:00", "10:00", "am"]}
 ]
   }
 }

@@ -1,11 +1,11 @@
 import React from "react";
 import tw from "tailwind-styled-components";
-import Time from "../cards/Time";
-import { ScheduleList, ScheduleProps } from "../../../types/schedule";
+import Time from "./cards/Time";
+import { ScheduleList, ScheduleProps } from "../../types/schedule";
 
 interface TableProps {
   weekday: string;
-  data: ScheduleProps[];
+  data: ScheduleList;
 }
 
 const Table = (props: TableProps) => {
@@ -36,7 +36,7 @@ const Table = (props: TableProps) => {
 export default Table;
 
 const FlexBox = tw.div`
-flex justify-center pt-10 flex-col w-full md:w-[90%] mx-auto
+flex pt-10 flex-col w-full md:w-[90%] mx-auto justify-start
 `;
 
 const InnerTable = tw.table`

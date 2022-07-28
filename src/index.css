@@ -11,6 +11,16 @@
   display: none;
 } */
 
+select::-ms-expand { 
+	display: none;
+}
+.select {
+  -o-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Karla', 'Segoe UI', 'Roboto', 'Oxygen',
