@@ -1,12 +1,7 @@
 {
   "card" : {  
     "monday": 
-    [  {
-      "id": "sdfsdfr",
-      "tutor": "pika",
-      "date" : "2022-07-27T09:00:10.171Z",
-      "week": "monday",
-    "time": ["09:00", "09:40", "am"]},
+    [  
     {
       "id": "sdfsd123dfer",
       "tutor": "pika",

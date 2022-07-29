@@ -20,6 +20,7 @@ export const Multi = (props: TableProps) => {
   );
   console.log(selected);
   const { timeFilter } = getDate();
+  console.log(timeFilter);
   const cut = useRecoilValue(cutTime);
   const [over, setOver] = useRecoilState(overBooked);
   console.log(over);
@@ -32,12 +33,15 @@ export const Multi = (props: TableProps) => {
     const a: ScheduleProps[] = [];
     const newMyArr = weeks.forEach(
       (currentElement: ScheduleProps[], index: number) => {
-        if (
-          currentElement[index]?.time.includes(timeFilter[index]) &&
-          currentElement[index]?.time.includes(cut)
-        ) {
-          a.push(currentElement[index]);
-        }
+        timeFilter.forEach((element: string, idx: number) => {
+          // console.log(element[idx]);
+          if (
+            currentElement[index]?.time.includes(element) &&
+            currentElement[index]?.time.includes(cut)
+          ) {
+            a.push(currentElement[index]);
+          }
+        });
       },
     );
 
