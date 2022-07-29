@@ -1,9 +1,8 @@
 import React from "react";
 import tw from "tailwind-styled-components";
-import { ScheduleList, ScheduleProps } from "../../../types/schedule";
-import { useScheduleModel } from "../../../api/model/useScheduleModels";
-import { ReactComponent as Vector } from "../../../static/image/Vector.svg";
-
+import { useScheduleModel } from "../../api/model/useScheduleModels";
+import { ReactComponent as Vector } from "../../static/image/Vector.svg";
+import { useConfirm } from "../../hooks/useConfirm";
 interface TableProps {
   time: string[];
   id: any;
@@ -14,10 +13,19 @@ const TimeCard = (time: TableProps) => {
   const { deleteSchedule } = useScheduleModel();
   const [visible, setVisible] = React.useState(true);
 
-  const deleteCard = () => {
+  const cancelConfirm = () => alert("취소되었습니다.");
+  const deleteConfirm = () => {
+    alert("삭제되었습니다.");
     deleteSchedule(time.week, time.id);
     setVisible(false);
   };
+
+  const confirmDelete = useConfirm(
+    "정말 삭제하시겠어요?",
+    deleteConfirm,
+    cancelConfirm,
+  );
+
   return (
     <Box>
       <Card className={visible ? "" : "hidden"}>
@@ -29,7 +37,7 @@ const TimeCard = (time: TableProps) => {
             {time.time[1]} {time.time[2]}
           </EndTime>
         </div>
-        <Cancel onClick={deleteCard}>
+        <Cancel onClick={confirmDelete}>
           <Vector />
         </Cancel>
       </Card>
@@ -46,8 +54,8 @@ const Card = tw.div`
 m-3 bg-slate-200 rounded-md
 `;
 
-const StartTime = tw.p``;
-const EndTime = tw.p``;
+const StartTime = tw.p`pl-1`;
+const EndTime = tw.p`pl-1`;
 const Cancel = tw.button`
-relative bottom-12 ml-[5.85rem] mt-1
+relative bottom-12 ml-[5.85rem] mt-1 text-gray-200 hover:text-engall-blue active:text-blue-300
 `;

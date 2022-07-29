@@ -5,36 +5,31 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import axios from "axios";
 import _ from "lodash";
 import { getDate } from "../../../hooks/getDate";
-import { ScheduleProps, ScheduleList } from "../../../types/schedule";
+import { ScheduleProps } from "../../../types/schedule";
 import tw from "tailwind-styled-components";
 
-interface TableProps {
+interface ItemsProps {
   items: string[];
 }
 
-export const Multi = (props: TableProps) => {
+export const Multi = (props: ItemsProps) => {
   const [warning, setWarning] = useState(false);
   const { selected, isSelected, onChange, setSelected } = useMultiSelect(
     [],
     warning,
   );
-  console.log(selected);
+
   const { timeFilter } = getDate();
-  console.log(timeFilter);
   const cut = useRecoilValue(cutTime);
   const [over, setOver] = useRecoilState(overBooked);
-  console.log(over);
   const [weeks, setWeeks] = React.useState<any>([]);
-  console.log(warning);
-
   const changeTime = useRecoilValue(timeState);
 
   useEffect(() => {
     const a: ScheduleProps[] = [];
-    const newMyArr = weeks.forEach(
+    const TimeCompare = weeks.forEach(
       (currentElement: ScheduleProps[], index: number) => {
         timeFilter.forEach((element: string, idx: number) => {
-          // console.log(element[idx]);
           if (
             currentElement[index]?.time.includes(element) &&
             currentElement[index]?.time.includes(cut)
@@ -120,9 +115,9 @@ export const Multi = (props: TableProps) => {
 };
 
 const Box = tw.li`
-w-20 h-12 bg-white mt-0.5 shadow-md flex justify-center items-center checked:bg-gray-200 hover:bg-gray-200
+w-20 h-12 bg-white mt-0.5 shadow-md flex justify-center items-center checked:bg-gray-200 hover:bg-gray-200 cursor-pointer
 `;
 
 const Label = tw.label`
-text-center checked:bg-gray-200 w-20
+text-center checked:bg-gray-200 w-20 h-12 cursor-pointer mt-5
 `;

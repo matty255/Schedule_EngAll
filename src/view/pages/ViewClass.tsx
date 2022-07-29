@@ -29,10 +29,9 @@ const ViewClass = () => {
       <Layout>
         <Header />
 
-        <div className="flex flex-col w-full min-h-full lg:w-[90%] xl:w-4/5 mx-auto ">
+        <InnerTable>
           <TopBox>
             <h1 className="m-3 mt-12 text-3xl font-bold">Class schedule</h1>
-            <button></button>
             <Button className="m-3 mt-12" onClick={() => navigate("/add")}>
               Add Class Schedule
             </Button>
@@ -55,7 +54,7 @@ const ViewClass = () => {
             />
             <Table weekday="sunday" data={data?.sunday.sort(sortFunction2)} />
           </div>
-        </div>
+        </InnerTable>
       </Layout>
     </>
   );
@@ -65,4 +64,8 @@ export default ViewClass;
 
 const TopBox = tw.div`
 flex flex-row justify-between
+`;
+
+const InnerTable = tw.div`
+flex flex-col w-full min-h-full lg:w-[90%] xl:w-4/5 mx-auto
 `;

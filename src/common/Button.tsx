@@ -1,13 +1,13 @@
 import React from "react";
 
-type TextType = {
+type ButtonType = {
   children: React.ReactNode | React.ReactNode[];
   className?: string;
   onClick?: () => void;
   disabled?: boolean;
 };
 
-const Button = (props: TextType) => {
+const Button = (props: ButtonType) => {
   const init = `bg-engall-blue w-[13.75rem] h-[3.125rem] 
     rounded-md shadow-md font-[1.25rem] text-white font-karla font-semibold
     disabled:bg-gray-200`;

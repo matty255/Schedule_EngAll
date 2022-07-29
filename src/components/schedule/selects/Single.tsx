@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useSingleSelect } from "../../../hooks/useSingleSelect";
 import tw from "tailwind-styled-components";
 
-interface TableProps {
+type ItemsProps = {
   items: object[];
-}
+};
 
-export const Single = (props: TableProps) => {
+export const Single = (props: ItemsProps) => {
   const { radioState, onRadioChange } = useSingleSelect();
   return (
     <>
@@ -16,7 +16,7 @@ export const Single = (props: TableProps) => {
             key={title}
             className={time === radioState ? "checked bg-gray-200" : ""}
           >
-            <Label for={onRadioChange}>
+            <Label>
               <input
                 className="hidden"
                 type="radio"
@@ -35,9 +35,9 @@ export const Single = (props: TableProps) => {
 };
 
 const Box = tw.div`
-w-14 bg-white mt-0.5 shadow-md flex justify-center checked:bg-gray-200 hover:bg-gray-200
+w-14 bg-white mt-0.5 shadow-md flex justify-center checked:bg-gray-200 hover:bg-gray-200 cursor-pointer
 `;
 
 const Label = tw.label`
-text-center mt-0.5 checked:bg-gray-200 w-14
+text-center mt-0.5 checked:bg-gray-200 w-14 cursor-pointer
 `;

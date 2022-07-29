@@ -21,8 +21,8 @@ const Home = () => {
 export default Home;
 
 const Box = tw.div`
-flex gap-10 justify-center mt-10
+flex gap-10 justify-center mt-10 text-white
 `;
 const StyledLink = tw(Link)`
-bg-engall-blue p-2 rounded-md
+bg-engall-blue p-2 rounded-md text-white
 `;

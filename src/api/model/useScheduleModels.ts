@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { apiRequest } from "../instance/instance";
-import { ScheduleList, ScheduleProps, Schedule } from "../../types/schedule";
+import { ScheduleProps, Schedule } from "../../types/schedule";
 
 export const useScheduleModel = () => {
   const addSchedule = (week: string[], data: ScheduleProps) => {

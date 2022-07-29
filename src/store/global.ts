@@ -1,6 +1,6 @@
-import { atom, atomFamily } from "recoil";
-import { ScheduleProps, ScheduleList } from "../types/schedule";
-import { set, setHours, add, addMinutes, format } from "date-fns";
+import { atom } from "recoil";
+import { ScheduleProps } from "../types/schedule";
+import { set } from "date-fns";
 
 const date = new Date();
 const date2 = set(date, {
@@ -34,17 +34,4 @@ export const cutTime = atom({
 export const weekdayArray = atom({
   key: "weekdayArray",
   default: [""],
-});
-
-export const Overlap = atom<any>({
-  key: "Overlap",
-  default: [
-    // {
-    //   id: "2313213",
-    //   tutor: "123123123",
-    //   time: ["09:00", "09:40", "am"],
-    //   week: "monday",
-    //   date: "2022-07-27T09:00:10.171Z",
-    // },null
-  ],
 });

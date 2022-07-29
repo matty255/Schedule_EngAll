@@ -8,9 +8,3 @@ export function sortFunction2(a: any, b: any) {
   if (dateA < dateB) return -1;
   else return 0;
 }
-
-// function sortFunction(a: ScheduleProps, b: ScheduleProps) {
-//   const dateA = new Date(a.date).getTime();
-//   const dateB = new Date(b.date).getTime();
-//   return dateA > dateB ? 1 : -1;
-// }

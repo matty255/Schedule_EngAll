@@ -1,4 +1,4 @@
-const am = 13;
+const am = 12;
 const pmMin = 21;
 
 const rendering = (time: number) => {

@@ -1,7 +1,6 @@
-import { useRecoilState, useRecoilValue } from "recoil";
-import { ScheduleProps } from "../types/schedule";
-import { timeState, cutTime, weekdayArray } from "../store/global";
-import { set, setHours, add, addMinutes, format } from "date-fns";
+import { useRecoilValue } from "recoil";
+import { timeState } from "../store/global";
+import { set, addMinutes, format } from "date-fns";
 
 export const getDate = () => {
   const changeTime = useRecoilValue(timeState);
@@ -14,7 +13,6 @@ export const getDate = () => {
   const timeValueEnd = addMinutes(timeValue, 40);
   const timeEnd = format(addMinutes(timeValue, 40), "HH:mm");
 
-  // const timeFilter: any = [];
   const makeArray = (timeValue: Date) => {
     const result = [timeValue];
 

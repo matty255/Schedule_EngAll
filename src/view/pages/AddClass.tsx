@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "../../components/layout/Header";
 import Layout from "../../components/layout/Layout";
 import tw from "tailwind-styled-components";
@@ -18,7 +18,6 @@ import {
   timeState,
   weekdayArray,
   cutTime,
-  Overlap,
   overBooked,
 } from "../../store/global";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -26,7 +25,6 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { useSubmit } from "../../hooks/useSubmit";
 import { useScheduleModel } from "../../api/model/useScheduleModels";
 import { useNavigate } from "react-router-dom";
-import { ScheduleProps, ScheduleList } from "../../types/schedule";
 
 const AddClass = () => {
   const { addSchedule } = useScheduleModel();
@@ -36,7 +34,6 @@ const AddClass = () => {
   const cut = useRecoilValue(cutTime);
   const { submitData } = useSubmit();
   const [over, setOver] = useRecoilState(overBooked);
-  console.log(Object.keys(over).length > 0);
 
   const onSubmit = () => {
     if (week.length > 0 && times.time !== 0) {
@@ -48,13 +45,12 @@ const AddClass = () => {
       alert("요일을 정해주세요!");
     }
   };
-  //
 
   return (
     <>
       <Layout>
         <Header />
-        <div className="flex flex-col w-full lg:w-4/5 mx-auto p-2">
+        <div className="flex flex-col w-full lg:w-4/5 mx-auto">
           <TopBox>
             <h1 className="ml-0 m-7 mt-12 text-3xl font-bold">
               Add Class Schedule

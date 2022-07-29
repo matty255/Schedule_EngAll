@@ -1,12 +1,12 @@
 import React from "react";
 import tw from "tailwind-styled-components";
-import Time from "./cards/Time";
-import { ScheduleList, ScheduleProps } from "../../types/schedule";
+import TimeCard from "./TimeCard";
+import { ScheduleList } from "../../types/schedule";
 
-interface TableProps {
+type TableProps = {
   weekday: string;
   data: ScheduleList;
-}
+};
 
 const Table = (props: TableProps) => {
   const { weekday, data } = props;
@@ -23,7 +23,7 @@ const Table = (props: TableProps) => {
             {data &&
               data.map((data) => (
                 <tr key={data?.id}>
-                  <Time time={data.time} id={data.id} week={weekday} />
+                  <TimeCard time={data.time} id={data.id} week={weekday} />
                 </tr>
               ))}
           </tbody>
@@ -37,9 +37,4 @@ export default Table;
 
 const FlexBox = tw.div`
 flex pt-10 flex-col w-full md:w-[90%] mx-auto justify-start
-`;
-
-const InnerTable = tw.table`
-bg-white table-fixed border-separate border-spacing-x-12 border-spacing-y-6 shadow-md
-w-full
 `;

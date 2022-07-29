@@ -1,4 +1,5 @@
 import React from "react";
+import { ScheduleList } from "../../types/schedule";
 
 declare module "*.jpg";
 declare module "*.png";

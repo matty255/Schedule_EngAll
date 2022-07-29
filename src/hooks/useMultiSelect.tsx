@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { weekdayArray, timeState, overBooked } from "../store/global";
+import { weekdayArray, timeState } from "../store/global";
 
 export const useMultiSelect = (initialValue: string[], warning: boolean) => {
   const [selected, setSelected] = useRecoilState<string[]>(weekdayArray);
   const changeTime = useRecoilValue(timeState);
-  const [over, setOver] = useRecoilState(overBooked);
-  console.log(over[0]?.week);
+
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!changeTime.time) return;
 
