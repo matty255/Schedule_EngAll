@@ -9,17 +9,21 @@ import Button from "../../common/Button";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { cutTime, timeState } from "../../store/global";
+import { sortFunction2 } from "../../hooks/getSort";
+
 const ViewClass = () => {
+  const navigate = useNavigate();
   const { getSchedule } = useScheduleModel();
   const [data, setData] = React.useState<ScheduleProps[] | any>();
-  const navigate = useNavigate();
   const [times, setTimes] = useRecoilState(timeState);
   const [cut, setCut] = useRecoilState(cutTime);
+
   React.useEffect(() => {
     getSchedule().then((response) => setData(response));
     setTimes({ time: 0, startTime: 0 });
     setCut("am");
   }, []);
+
   return (
     <>
       <Layout>
@@ -34,13 +38,22 @@ const ViewClass = () => {
             </Button>
           </TopBox>
           <div className="flex flex-row">
-            <Table weekday="monday" data={data?.monday} />
-            <Table weekday="tuesday" data={data?.tuesday} />
-            <Table weekday="wednesday" data={data?.wednesday} />
-            <Table weekday="thursday" data={data?.thursday} />
-            <Table weekday="friday" data={data?.friday} />
-            <Table weekday="saturday" data={data?.saturday} />
-            <Table weekday="sunday" data={data?.sunday} />
+            <Table weekday="monday" data={data?.monday.sort(sortFunction2)} />
+            <Table weekday="tuesday" data={data?.tuesday.sort(sortFunction2)} />
+            <Table
+              weekday="wednesday"
+              data={data?.wednesday.sort(sortFunction2)}
+            />
+            <Table
+              weekday="thursday"
+              data={data?.thursday.sort(sortFunction2)}
+            />
+            <Table weekday="friday" data={data?.friday.sort(sortFunction2)} />
+            <Table
+              weekday="saturday"
+              data={data?.saturday.sort(sortFunction2)}
+            />
+            <Table weekday="sunday" data={data?.sunday.sort(sortFunction2)} />
           </div>
         </div>
       </Layout>

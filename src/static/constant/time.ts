@@ -1,14 +1,17 @@
-const rendering = () => {
+const am = 13;
+const pmMin = 21;
+
+const rendering = (time: number) => {
   const result = [];
-  for (let i = 1; i < 13; i++) {
+  for (let i = 1; i < time; i++) {
     result.push(i);
   }
   return result;
 };
 
-const startTimeRendering = () => {
+const startTimeRendering = (pmMin: number) => {
   const result = [];
-  for (let i = 0; i < 60; i++) {
+  for (let i = 0; i < pmMin; i++) {
     if (i % 5 === 0) {
       result.push(i);
     }
@@ -16,5 +19,7 @@ const startTimeRendering = () => {
   return result;
 };
 
-export const time = rendering();
-export const startTime = startTimeRendering();
+export const amTime = rendering(am);
+export const pmTime = rendering(am - 1);
+export const amStartTime = startTimeRendering(pmMin + 40);
+export const pmStartTime = startTimeRendering(pmMin);

@@ -3,7 +3,7 @@ interface ScheduleProps {
   tutor: string;
   time: string[];
   week?: string;
-  date: Date;
+  date: Date | string;
 }
 
 type ScheduleList = ScheduleProps[];

@@ -1,40 +1,67 @@
 import React, { useEffect, useState } from "react";
 import { useMultiSelect } from "../../../hooks/useMultiSelect";
 import { useScheduleModel } from "../../../api/model/useScheduleModels";
-import { Overlap, CompareValue, timeState } from "../../../store/global";
+import { cutTime, timeState, overBooked } from "../../../store/global";
 import { useRecoilState, useRecoilValue } from "recoil";
 import axios from "axios";
+import _ from "lodash";
 import { getCompare } from "../../../hooks/getCompare";
 import { getDate } from "../../../hooks/getDate";
-
+import { ScheduleProps, ScheduleList } from "../../../types/schedule";
 interface TableProps {
   items: string[];
 }
 
 export const Multi = (props: TableProps) => {
-  const { selected, isSelected, onChange, setSelected } = useMultiSelect([]);
-  const { selectedTime, timeEnd, timeValue, timeValueEnd } = getDate();
-  const [data, setData] = useRecoilState(Overlap);
-  const { newArr, isBooked } = getCompare(data, selectedTime);
+  const [warning, setWarning] = useState(false);
+  const { selected, isSelected, onChange, setSelected } = useMultiSelect(
+    [],
+    warning,
+  );
+  console.log(selected);
+  const { timeFilter } = getDate();
+  const cut = useRecoilValue(cutTime);
+  const [over, setOver] = useRecoilState(overBooked);
+  console.log(over);
+  const [weeks, setWeeks] = React.useState<any>([]);
+  console.log(warning);
+
   const changeTime = useRecoilValue(timeState);
-  console.log(changeTime.time);
-  console.log(isBooked);
+
   useEffect(() => {
-    setData([]);
-  }, []);
+    const a: ScheduleProps[] = [];
+    const newMyArr = weeks.forEach(
+      (currentElement: ScheduleProps[], index: number) => {
+        if (
+          currentElement[index]?.time.includes(timeFilter[index]) &&
+          currentElement[index]?.time.includes(cut)
+        ) {
+          a.push(currentElement[index]);
+        }
+      },
+    );
+
+    if (a.length > 0) {
+      setOver(a);
+      setWarning(true);
+    }
+  }, [weeks, selected]);
 
   useEffect(() => {
     Promise.all(
-      selected.map(function (week) {
-        return axios
+      selected.map(async function (week) {
+        return await axios
           .get(`http://localhost:8000/${week}/`)
           .then((response) => {
-            const cp = [response.data];
-            setData([...cp]);
+            const result = response.data;
+            if (typeof result !== "string") {
+              setWeeks(_.uniq([result]));
+              setWarning(false);
+            }
           })
           .catch((error) => {
             console.log(error.response.data.error);
-            // throw error;
+            throw error;
           });
       }),
     );
@@ -47,13 +74,12 @@ export const Multi = (props: TableProps) => {
       setSelected([...props.items]);
     }
   };
-  const clear = () => {
-    setSelected([]);
-  };
 
   useEffect(() => {
-    clear();
-  }, []);
+    setSelected([]);
+    setWarning(false);
+    setOver([]);
+  }, [cut, warning, changeTime]);
 
   return (
     <>
@@ -65,7 +91,7 @@ export const Multi = (props: TableProps) => {
                 id={value}
                 type="checkbox"
                 value={value}
-                checked={isSelected(value)}
+                checked={!warning && isSelected(value)}
                 onChange={onChange}
                 onClick={() =>
                   !changeTime.time && alert("시간을 먼저 정해주세요!")

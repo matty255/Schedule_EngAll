@@ -9,7 +9,7 @@ export class HttpRequest {
     this.service = service;
   }
 
-  get<T>(url: ApiUrlType, queryString = "") {
+  get<T>(url: string, queryString = "") {
     return this.service
       .get<T>(`${url}?${queryString}`)
       .then((response) => response.data);

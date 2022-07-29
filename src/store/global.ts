@@ -8,6 +8,11 @@ const date2 = set(date, {
   minutes: 10,
 });
 
+export const overBooked = atom<ScheduleProps[]>({
+  key: "overBooked",
+  default: [],
+});
+
 export const CompareValue = atom<Date>({
   key: "CompareValue",
   default: date2,
@@ -31,15 +36,15 @@ export const weekdayArray = atom({
   default: [""],
 });
 
-export const Overlap = atom({
+export const Overlap = atom<any>({
   key: "Overlap",
   default: [
-    {
-      id: "2313213",
-      tutor: "123123123",
-      time: ["09:00", "09:40", "am"],
-      week: "monday",
-      date: "2022-07-27T09:00:10.171Z",
-    },
+    // {
+    //   id: "2313213",
+    //   tutor: "123123123",
+    //   time: ["09:00", "09:40", "am"],
+    //   week: "monday",
+    //   date: "2022-07-27T09:00:10.171Z",
+    // },null
   ],
 });

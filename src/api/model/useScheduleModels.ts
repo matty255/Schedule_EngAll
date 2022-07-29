@@ -10,7 +10,8 @@ export const useScheduleModel = () => {
         (await apiRequest.post(`/${week}`, Object.assign(data, { week }))),
     );
   };
-  const getSchedule = async () => await apiRequest.get<Schedule>("/schedule");
+  const getSchedule = async () =>
+    await apiRequest.get<Schedule>("/schedule", "_sort=date");
 
   const deleteSchedule = async (week: string, id: string) =>
     await apiRequest.delete(week, id);

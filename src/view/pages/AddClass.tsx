@@ -4,33 +4,52 @@ import Layout from "../../components/layout/Layout";
 import tw from "tailwind-styled-components";
 import Button from "../../common/Button";
 import Menu from "../../components/schedule/dropdown/Menu";
-import { time, startTime } from "../../static/constant/time";
+import {
+  amTime,
+  pmTime,
+  amStartTime,
+  pmStartTime,
+} from "../../static/constant/time";
 import { weekdays } from "../../static/constant/weekdays";
 import { Multi } from "../../components/schedule/selects/Multi";
 import { Single } from "../../components/schedule/selects/Single";
 import { AmPm } from "../../static/constant/AmPm";
-import { timeState, weekdayArray } from "../../store/global";
+import {
+  timeState,
+  weekdayArray,
+  cutTime,
+  Overlap,
+  overBooked,
+} from "../../store/global";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 import { useSubmit } from "../../hooks/useSubmit";
 import { useScheduleModel } from "../../api/model/useScheduleModels";
 import { useNavigate } from "react-router-dom";
+import { ScheduleProps, ScheduleList } from "../../types/schedule";
 
 const AddClass = () => {
   const { addSchedule } = useScheduleModel();
   const navigate = useNavigate();
   const week = useRecoilValue(weekdayArray);
   const times = useRecoilValue(timeState);
+  const cut = useRecoilValue(cutTime);
   const { submitData } = useSubmit();
+  const [over, setOver] = useRecoilState(overBooked);
+  console.log(Object.keys(over).length > 0);
 
   const onSubmit = () => {
     if (week.length > 0 && times.time !== 0) {
       addSchedule(week, submitData);
       navigate("/view", { replace: true });
+    } else if (times.time === 0) {
+      alert("시간을 입력해주세요!");
+    } else {
+      alert("요일을 정해주세요!");
     }
   };
   //
-  useEffect(() => {}, []);
+
   return (
     <>
       <Layout>
@@ -45,17 +64,25 @@ const AddClass = () => {
             <DropdownBox>
               <Text>
                 start time :
-                <Menu menu={time} submit="time" />
-                <Menu menu={startTime} submit="startTime" />
+                <Menu menu={cut === "am" ? amTime : pmTime} submit="time" />
+                <Menu
+                  menu={cut === "am" ? amStartTime : pmStartTime}
+                  submit="startTime"
+                />
                 <Single items={AmPm} />
               </Text>
               <Text>
                 repeat on : <Multi items={weekdays} />
               </Text>
             </DropdownBox>
+            {Object.keys(over).length > 0 && <div>이미 예약된 시간입니다</div>}
           </AddTable>
 
-          <Button className="self-end mt-3" onClick={onSubmit}>
+          <Button
+            className="self-end mt-3"
+            onClick={onSubmit}
+            disabled={Object.keys(over).length > 0}
+          >
             Save
           </Button>
         </div>

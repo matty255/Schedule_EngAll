@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Dropdown from "./Dropdown";
-import { timeState, CompareValue } from "../../../store/global";
-import { useRecoilState } from "recoil";
+import { timeState, CompareValue, cutTime } from "../../../store/global";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { getDate } from "../../../hooks/getDate";
 interface TableProps {
   menu: number[];
@@ -16,14 +16,25 @@ const Menu = (menu: TableProps) => {
   const { timeValue } = getDate();
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
   const [compareValue, setCompareValue] = useRecoilState(CompareValue);
+  const cut = useRecoilValue(cutTime);
   const [select, setSelect] = useState<string>("");
   const [times, setTimes] = useRecoilState(timeState);
+  // console.log(times.startTime > 20 && cut === "pm");
 
   React.useEffect(() => {
     if (times.time !== 0) {
       setCompareValue(timeValue);
     }
   }, [times]);
+
+  React.useEffect(() => {
+    if (times.time === 12 || (times.time === 11 && times.startTime > 20)) {
+      setSelect("");
+      setTimes({ time: 0, startTime: 0 });
+
+      alert("저녁 시간은 11시 20분까지만 선택 가능합니다.");
+    }
+  }, [cut]);
 
   const submit = menu.submit;
 

@@ -13,7 +13,20 @@ export const getDate = () => {
   });
   const timeValueEnd = addMinutes(timeValue, 40);
   const timeEnd = format(addMinutes(timeValue, 40), "HH:mm");
+
+  // const timeFilter: any = [];
+  const makeArray = (timeValue: Date) => {
+    const result = [timeValue];
+
+    for (let i = 0; i < 8; i++) {
+      const a = result[i];
+      result.push(addMinutes(a, 5));
+    }
+    const a: any = result.map((date, i) => format(date, "HH:mm"));
+    return a;
+  };
+  const timeFilter = makeArray(timeValue);
   const selectedTime = format(timeValue, "HH:mm");
 
-  return { selectedTime, timeEnd, timeValue, timeValueEnd };
+  return { selectedTime, timeEnd, timeValue, timeValueEnd, timeFilter };
 };
