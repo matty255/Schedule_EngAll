@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useMultiSelect } from "../../../hooks/useMultiSelect";
-import { useScheduleModel } from "../../../api/model/useScheduleModels";
 import { cutTime, timeState, overBooked } from "../../../store/global";
 import { useRecoilState, useRecoilValue } from "recoil";
 import axios from "axios";
 import _ from "lodash";
-import { getCompare } from "../../../hooks/getCompare";
 import { getDate } from "../../../hooks/getDate";
 import { ScheduleProps, ScheduleList } from "../../../types/schedule";
+import tw from "tailwind-styled-components";
+
 interface TableProps {
   items: string[];
 }
@@ -87,22 +87,28 @@ export const Multi = (props: TableProps) => {
 
   return (
     <>
-      <ul className="flex flex-row gap-3 ">
+      <ul className="flex flex-row gap-3 flex-wrap">
         {props.items &&
           props.items.map((value) => (
-            <li key={value}>
-              <input
-                id={value}
-                type="checkbox"
-                value={value}
-                checked={!warning && isSelected(value)}
-                onChange={onChange}
-                onClick={() =>
-                  !changeTime.time && alert("시간을 먼저 정해주세요!")
-                }
-              />
-              <label>{value}</label>
-            </li>
+            <Box
+              key={value}
+              className={!warning && isSelected(value) && "bg-gray-200"}
+            >
+              <Label>
+                <input
+                  id={value}
+                  className="hidden"
+                  type="checkbox"
+                  value={value}
+                  checked={!warning && isSelected(value)}
+                  onChange={onChange}
+                  onClick={() =>
+                    !changeTime.time && alert("시간을 먼저 정해주세요!")
+                  }
+                />
+                {value}
+              </Label>
+            </Box>
           ))}
         <li>
           <input onClick={allChange} type="checkbox" />
@@ -112,3 +118,11 @@ export const Multi = (props: TableProps) => {
     </>
   );
 };
+
+const Box = tw.li`
+w-20 h-12 bg-white mt-0.5 shadow-md flex justify-center items-center checked:bg-gray-200 hover:bg-gray-200
+`;
+
+const Label = tw.label`
+text-center checked:bg-gray-200 w-20
+`;

@@ -3,6 +3,7 @@ import Dropdown from "./Dropdown";
 import { timeState, CompareValue, cutTime } from "../../../store/global";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { getDate } from "../../../hooks/getDate";
+import { ReactComponent as Polygon } from "../../../static/image/Polygon.svg";
 interface TableProps {
   menu: number[];
   submit: string;
@@ -60,13 +61,15 @@ const Menu = (menu: TableProps) => {
   return (
     <>
       <button
-        className={showDropDown ? "active bg-gray-200 shadow-md" : "shadow-md"}
+        className={
+          showDropDown ? "active bg-gray-200 shadow-md flex" : "shadow-md flex"
+        }
         onClick={(): void => toggleDropDown()}
         onBlur={(e: React.FocusEvent<HTMLButtonElement>): void =>
           dismissHandler(e)
         }
       >
-        <div className="p-1 w-20">
+        <div className="p-1 w-[3.5rem]">
           {select || (submit === "time" ? "0" : "00")}
         </div>
         {showDropDown && (
@@ -77,6 +80,13 @@ const Menu = (menu: TableProps) => {
             menuSelection={menuSelection}
           />
         )}
+        <Polygon
+          className={
+            showDropDown
+              ? "flex relative text-white  mt-2 mr-1 rotate-180 transition duration-150"
+              : "flex relative text-gray-200 mt-2 mr-1 transition duration-150"
+          }
+        />
       </button>
     </>
   );

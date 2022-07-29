@@ -54,7 +54,7 @@ const AddClass = () => {
     <>
       <Layout>
         <Header />
-        <div className="flex flex-col w-full lg:w-4/5 mx-auto">
+        <div className="flex flex-col w-full lg:w-4/5 mx-auto p-2">
           <TopBox>
             <h1 className="ml-0 m-7 mt-12 text-3xl font-bold">
               Add Class Schedule
@@ -64,12 +64,14 @@ const AddClass = () => {
             <DropdownBox>
               <Text>
                 start time :
-                <Menu menu={cut === "am" ? amTime : pmTime} submit="time" />
+                <Menu menu={cut === "am" ? amTime : pmTime} submit="time" /> :
                 <Menu
                   menu={cut === "am" ? amStartTime : pmStartTime}
                   submit="startTime"
                 />
-                <Single items={AmPm} />
+                <div className="flex flex-col md:flex-row">
+                  <Single items={AmPm} />
+                </div>
               </Text>
               <Text>
                 repeat on : <Multi items={weekdays} />
@@ -79,7 +81,7 @@ const AddClass = () => {
           </AddTable>
 
           <Button
-            className="self-end mt-3"
+            className="self-center md:self-end mt-3"
             onClick={onSubmit}
             disabled={Object.keys(over).length > 0}
           >
@@ -98,7 +100,7 @@ flex flex-row justify-between
 `;
 
 const AddTable = tw.div`
-w-full bg-white h-60
+w-full bg-white h-auto
 `;
 
 const DropdownBox = tw.div`

@@ -29,7 +29,7 @@ const ViewClass = () => {
       <Layout>
         <Header />
 
-        <div className="flex flex-col w-full lg:w-4/5 mx-auto">
+        <div className="flex flex-col w-full min-h-full lg:w-[90%] xl:w-4/5 mx-auto ">
           <TopBox>
             <h1 className="m-3 mt-12 text-3xl font-bold">Class schedule</h1>
             <button></button>
@@ -37,7 +37,7 @@ const ViewClass = () => {
               Add Class Schedule
             </Button>
           </TopBox>
-          <div className="flex flex-row">
+          <div className="flex flex-row overflow-auto">
             <Table weekday="monday" data={data?.monday.sort(sortFunction2)} />
             <Table weekday="tuesday" data={data?.tuesday.sort(sortFunction2)} />
             <Table
