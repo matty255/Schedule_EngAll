@@ -17,11 +17,11 @@ export const getDate = () => {
     const result = [timeValue];
 
     for (let i = 0; i < 8; i++) {
-      const a = result[i];
-      result.push(addMinutes(a, 5));
+      const results = result[i];
+      result.push(addMinutes(results, 5));
     }
-    const a: any = result.map((date, i) => format(date, "HH:mm"));
-    return a;
+    const formattedArray: any = result.map((date, i) => format(date, "HH:mm"));
+    return formattedArray;
   };
   const timeFilter = makeArray(timeValue);
   const selectedTime = format(timeValue, "HH:mm");

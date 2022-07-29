@@ -28,16 +28,16 @@ const DropDown: React.FC<DropDownProps> = ({
           showDropDown ? "dropdown" : "dropdown active fixed  bg-white"
         }
       >
-        {menu.map((m: number, index: number): JSX.Element => {
+        {menu.map((item: number, index: number): JSX.Element => {
           return (
             <p
               className="hover:bg-gray-200 p-1 w-20"
               key={index}
               onClick={(): void => {
-                onClickHandler(m);
+                onClickHandler(item);
               }}
             >
-              {m}
+              {item}
             </p>
           );
         })}

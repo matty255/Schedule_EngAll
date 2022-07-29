@@ -26,7 +26,7 @@ export const Multi = (props: ItemsProps) => {
   const changeTime = useRecoilValue(timeState);
 
   useEffect(() => {
-    const a: ScheduleProps[] = [];
+    const filteredArray: ScheduleProps[] = [];
     const TimeCompare = weeks.forEach(
       (currentElement: ScheduleProps[], index: number) => {
         timeFilter.forEach((element: string, idx: number) => {
@@ -34,14 +34,14 @@ export const Multi = (props: ItemsProps) => {
             currentElement[index]?.time.includes(element) &&
             currentElement[index]?.time.includes(cut)
           ) {
-            a.push(currentElement[index]);
+            filteredArray.push(currentElement[index]);
           }
         });
       },
     );
 
-    if (a.length > 0) {
-      setOver(a);
+    if (filteredArray.length > 0) {
+      setOver(filteredArray);
       setWarning(true);
     }
   }, [weeks, selected]);

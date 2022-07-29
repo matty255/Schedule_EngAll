@@ -66,8 +66,8 @@ const Menu = (menu: MenuProps) => {
           showDropDown ? "active bg-gray-200 shadow-md flex" : "shadow-md flex"
         }
         onClick={(): void => toggleDropDown()}
-        onBlur={(e: React.FocusEvent<HTMLButtonElement>): void =>
-          dismissHandler(e)
+        onBlur={(event: React.FocusEvent<HTMLButtonElement>): void =>
+          dismissHandler(event)
         }
       >
         <div className="p-1 w-[3.5rem]">
