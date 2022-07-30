@@ -7,7 +7,7 @@
 ## 설치 방법
 
 - `git clone 주소`
-- `cd project
+- `cd project`
 - `yarn install`
 - `yarn start`
 
