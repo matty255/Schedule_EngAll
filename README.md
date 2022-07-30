@@ -4,6 +4,13 @@
 
 ## 제작 기간 : 2022 - 07 - 27 ~ 2022 - 07 - 29
 
+## 설치 방법
+
+- `git clone 주소`
+- `cd project
+- `yarn install`
+- `yarn start`
+
 ## 사용 스택
 
 - `typeScript` : 타입스크립트로 build했습니다.

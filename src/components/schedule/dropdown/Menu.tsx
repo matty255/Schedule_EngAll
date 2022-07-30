@@ -30,7 +30,7 @@ const Menu = (menu: MenuProps) => {
   }, [times]);
 
   React.useEffect(() => {
-    if (times.time === 11 || (times.time === 10 && times.startTime > 20)) {
+    if (times.time > 11 || (times.time >= 10 && times.startTime > 20)) {
       setSelect("");
       setTimes({ time: 0, startTime: 0 });
 

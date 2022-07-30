@@ -1,4 +1,4 @@
-const am = 12;
+const am = 13;
 const pmMin = 21;
 
 const rendering = (time: number) => {
@@ -20,6 +20,6 @@ const startTimeRendering = (pmMin: number) => {
 };
 
 export const amTime = rendering(am);
-export const pmTime: number[] = [12, ...rendering(am - 1)];
+export const pmTime = rendering(am - 2);
 export const amStartTime = startTimeRendering(pmMin + 40);
 export const pmStartTime = startTimeRendering(pmMin);
