@@ -4,12 +4,27 @@
 
 ## 제작 기간 : 2022 - 07 - 27 ~ 2022 - 07 - 29
 
-## 설치 방법
+# 실행방법
+```
+- mac일 경우
+1. git clone https://github.com/Wanted-Pre-Onboarding-Frontend-2/Wan2trip.git
+2. cd [folder name]
+3. yarn install
+4. yarn start
+하면 json-server가 같이 실행됩니다.
 
-- `git clone 주소`
-- `cd project`
-- `yarn install`
-- `yarn start`
+- window일 경우
+1. git clone https://github.com/Wanted-Pre-Onboarding-Frontend-2/Wan2trip.git
+2. cd [folder name]
+3. yarn install
+
+4. 터미널을 2개로 분할
+5. 1번터미널 : yarn start
+6. 2번터미널 : cd [folder name]
+7. 2번터미널 : yarn server
+
+json-server를 따로 켜주셔야 합니다.
+```
 
 ## 사용 스택
 
